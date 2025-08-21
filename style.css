@@ -76,6 +76,7 @@ h1::after {
   animation: fadeInUp 0.8s forwards;
 }
 
+/* Foto dengan bingkai neon */
 .card img {
   width: 100px;
   height: 100px;
@@ -125,7 +126,7 @@ h1::after {
   justify-self: center;
 }
 
-/* MODAL */
+/* Style Modal */
 .modal {
   display: none;
   position: fixed;
@@ -174,4 +175,4 @@ h1::after {
 
 .modal-close:hover {
   color: #ff4081;
-  }
+}
