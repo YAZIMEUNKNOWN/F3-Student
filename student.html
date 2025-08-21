@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Class XI F3 STUDENT</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Poppins, sans-serif;
+      background: linear-gradient(-45deg, #0b0b11, #1c1c2e, #111827, #0f2027);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 0;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      margin: 50px 0 20px;
+      background: linear-gradient(90deg, #00f5d4, #00bbf9, #f15bb5, #ff4d6d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      height: 4px;
+      width: 100%;
+      margin: 6px auto 0;
+      background: linear-gradient(90deg, #00f5d4, #00bbf9, #f15bb5, #ff4d6d);
+      border-radius: 2px;
+      animation: underlineAnim 3s linear infinite;
+      background-size: 200% 100%;
+    }
+
+    @keyframes underlineAnim {
+      0% {background-position: 0%;}
+      100% {background-position: 200%;}
+    }
+
+    .student-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 25px;
+      justify-items: center;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      padding: 20px 10px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      width: 140px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.15);
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    /* FOTO DENGAN BINGKAI NEON */
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 4px solid transparent;
+      background: linear-gradient(45deg, #ff0055, #00ffaa, #00aaff, #f15bb5, #ff4d6d);
+      background-size: 300% 300%;
+      animation: borderNeon 6s linear infinite, floatImg 6s ease-in-out infinite;
+      padding: 4px; /* ruang untuk border neon */
+    }
+
+    @keyframes borderNeon {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    @keyframes floatImg {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.07);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8),
+                  0 0 25px rgba(0, 191, 255, 0.9),
+                  0 0 35px rgba(241, 91, 181, 0.8);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin: 0;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .center-card {
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+
+    /* STYLE MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 80px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.9);
+      animation: fadeIn 0.4s;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255, 0, 128, 0.8);
+      animation: zoomIn 0.4s;
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.7);}
+      to {transform: scale(1);}
+    }
+
+    .modal-caption {
+      text-align: center;
+      color: #fff;
+      margin-top: 12px;
+      font-size: 18px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #ff4081;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Class XI F3 STUDENT</h1>
+    <p>Satu hati, satu semangat, satu tujuan — XI F3 tak tergantikan. ✨</p>
+    
+    <!-- Boys Student -->
+    <h1>Boys Student</h1>
+    <div class="student-cards">
+      <div class="card"><img src="https://files.catbox.moe/0q8b3v.jpg" alt="Delon Marvinda"><h3>Delon Marvinda</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/cm1jkr.jpg" alt="Rahel Tree Marwan"><h3>Rahel Tree Marwan</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/ib9mxn.jpg" alt="Muhammad Fano"><h3>Muhammad Fano</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/cb8h1g.jpg" alt="Al Aziz Desrul"><h3>Al Aziz Desrul</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/o16bgr.jpg" alt="Fedi Romanda"><h3>Fedi Romanda</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/ztlw8c.jpg" alt="Rafif Ihtisyam"><h3>Rafif Ihtisyam</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/mlx5ty.jpg" alt="Muhammad Rian"><h3>Muhammad Rian</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/a5l6h1.jpg" alt="Revil Ramadhan"><h3>Revil Ramadhan</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/xz581p.jpg" alt="Muhammad Raivan"><h3>Muhammad Raivan</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/zmb0f3.jpg" alt="Ardho Razaq Doli Putra"><h3>Ardho Razaq Doli Putra</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/mkeqtd.jpg" alt="Ikra Muhaikal"><h3>Ikra Muhaikal</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/qtkqr1.jpg" alt="Muhammad Al Fajri"><h3>Muhammad Al Fajri</h3></div>
+      <div class="card center-card"><img src="https://files.catbox.moe/febt37.jpg" alt="Azmi Zayy"><h3>Azmi Zayy [ZimeMajesty]</h3></div>
+    </div>
+
+    <!-- Girls Student -->
+    <h1>Girls Student</h1>
+    <div class="student-cards">
+      <div class="card"><img src="https://files.catbox.moe/w69zai.jpg" alt="Latifah Aprilia"><h3>Latifah Aprilia</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/pbtg7e.jpg" alt="Tara Nafisa"><h3>Tara Nafisa</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/nz9fy3.jpg" alt="Stefanya Queenzha"><h3>Stefanya Queenzha</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/f5fpg5.jpg" alt="Siti Fadila"><h3>Siti Fadila</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/yee3n8.jpg" alt="Zahkia Huljannah"><h3>Zahkia Huljannah</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/qmp24d.jpg" alt="Jihan Putri Ramadhani"><h3>Jihan Putri Ramadhani</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/jpkc3l.jpg" alt="Fahra"><h3>Fahra</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/wa56al.jpg" alt="Aulia Putri"><h3>Aulia Putri</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/sh5m0d.jpg" alt="Salwa Ramadhani"><h3>Salwa Ramadhani</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/m1zrrm.jpg" alt="Novita Karmila Putri"><h3>Novita Karmila Putri</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/lo0i0t.jpg" alt="Rara Safitri"><h3>Rara Safitri</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/yz5cnc.jpg" alt="Chika Deskymarsha putri"><h3>Chika Deskymarsha putri</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/iokj1e.jpg" alt="Aura Anatasya"><h3>Aura Anatasya</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/pmm6e9.jpg" alt="Jesti Amima Nawawi"><h3>Jesti Amima Nawawi</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/dp8l1v.jpg" alt="Nalara Faiza"><h3>Nalara Faiza</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/auqypv.jpg" alt="Khairatun Hisan"><h3>Khairatun Hisan</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/ijsh2z.jpg" alt="Ide laura khairunnisa"><h3>Ide laura khairunnisa</h3></div>
+      <div class="card"><img src="https://files.catbox.moe/4jh0j7.jpg" alt="Elzi Zakiah"><h3>Elzi Zakiah</h3></div>
+    </div>
+  </div>
+</body>
+</html>
+  <!-- Modal untuk Preview Foto -->
+  <div id="photoModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption" class="modal-caption"></div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("modalImg");
+    const captionText = document.getElementById("caption");
+    const closeBtn = document.querySelector(".modal-close");
+
+    const imgs = document.querySelectorAll(".card img");
+    imgs.forEach(img => {
+      img.addEventListener("click", function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      });
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
